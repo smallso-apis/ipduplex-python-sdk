@@ -62,6 +62,10 @@ class Collections:
 
                 self.service_client: Service = service_client
 
+                # Initialize accessor
+
+                OverviewAccessor.__init__(self)
+
             except Exception as exception_context:
 
                 print('{MODULE_NAME}.py::Collections.Insights.__init__ -> {EXCEPTION_TEXT}'.format(
