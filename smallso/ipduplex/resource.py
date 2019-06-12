@@ -77,7 +77,7 @@ class Collections:
 
         # overwrite get function
 
-        def get(self) -> OverviewAccessor:
+        def get(self) -> Types.OverviewResult:
             '''
             Get is a member method. 
             This method retrieves an overview attribute for a specified IPv4 or IPv6 address, 
