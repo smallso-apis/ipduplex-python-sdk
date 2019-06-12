@@ -120,9 +120,9 @@ class Collections:
                 self.property.threat.tags = (list(response_result['result']['threat']['tags']) 
                     if response_result['result']['threat']['tags'] else None)
                 
-                self.property.other.source_ip.ipv4 = response_result['other']['sourceIp']['ipv4']
-                self.property.other.source_ip.ipv6 = response_result['other']['sourceIp']['ipv6']
-                self.property.other.ip_version = response_result['other']['ipVersion']
+                self.property.other.source_ip.ipv4 = response_result['result']['other']['sourceIp']['ipv4']
+                self.property.other.source_ip.ipv6 = response_result['result']['other']['sourceIp']['ipv6']
+                self.property.other.ip_version = response_result['result']['other']['ipVersion']
 
                 return self.property
             
