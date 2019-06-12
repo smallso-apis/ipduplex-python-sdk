@@ -358,6 +358,11 @@ class Types:
         '''
         HeaderResult is a dynamic class. 
         This class indicates the HTTP response headers that are available for use.
+
+        member str version: Indicates the version of the Cloud API service that was invoked this time.
+
+        member str time_spend: Indicates the processing time of this API call request Cloud API. 
+            If the processing time is undetermined, the value of this header will be set to not-sure.
         '''
 
         # define __init__ function

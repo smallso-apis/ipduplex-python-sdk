@@ -15,9 +15,8 @@
 # limitations under the License.
 
 import json
-
-from smallso.ipduplex.common import requests
-from smallso.ipduplex.common import retrying
+import requests
+import retrying
 
 from smallso.ipduplex.version import Version
 from smallso.ipduplex.errors import *
