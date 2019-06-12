@@ -86,41 +86,41 @@ class Collections:
 
             try:
                 
-                response_result, response_headers = self.service_client.request_rest_api(
+                response_body, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
                     )
                 )
 
-                self.code = response_result['code']
-                self.message = response_result['message']
-                self.request_id = response_result['requestId']
+                self.code = response_body['code']
+                self.message = response_body['message']
+                self.request_id = response_body['requestId']
 
-                self.property.region.country_name = response_result['result']['region']['countryName']
-                self.property.region.province_name = response_result['result']['region']['provinceName']
-                self.property.region.city_name = response_result['result']['region']['cityName']
-                self.property.region.county_name = response_result['result']['region']['countyName']
+                self.property.region.country_name = response_body['result']['region']['countryName']
+                self.property.region.province_name = response_body['result']['region']['provinceName']
+                self.property.region.city_name = response_body['result']['region']['cityName']
+                self.property.region.county_name = response_body['result']['region']['countyName']
 
-                self.property.location.timezone_name = response_result['result']['location']['timezoneName']
-                self.property.location.longitude_number = response_result['result']['location']['longitudeNumber']
-                self.property.location.latitude_number = response_result['result']['location']['latitudeNumber']
+                self.property.location.timezone_name = response_body['result']['location']['timezoneName']
+                self.property.location.longitude_number = response_body['result']['location']['longitudeNumber']
+                self.property.location.latitude_number = response_body['result']['location']['latitudeNumber']
 
-                self.property.provider.isp_names = (list(response_result['result']['provider']['ispNames']) 
-                    if response_result['result']['provider']['ispNames'] else None)
-                self.property.provider.isp_types = (list(response_result['result']['provider']['ispTypes']) 
-                    if response_result['result']['provider']['ispTypes'] else None)
-                self.property.provider.as_number = response_result['result']['provider']['asNumber']
-                self.property.provider.as_name = response_result['result']['provider']['asName']
+                self.property.provider.isp_names = (list(response_body['result']['provider']['ispNames']) 
+                    if response_body['result']['provider']['ispNames'] else None)
+                self.property.provider.isp_types = (list(response_body['result']['provider']['ispTypes']) 
+                    if response_body['result']['provider']['ispTypes'] else None)
+                self.property.provider.as_number = response_body['result']['provider']['asNumber']
+                self.property.provider.as_name = response_body['result']['provider']['asName']
 
-                self.property.threat.timestamp = response_result['result']['threat']['timestamp']
-                self.property.threat.exponent = response_result['result']['threat']['exponent']
-                self.property.threat.tags = (list(response_result['result']['threat']['tags']) 
-                    if response_result['result']['threat']['tags'] else None)
+                self.property.threat.timestamp = response_body['result']['threat']['timestamp']
+                self.property.threat.exponent = response_body['result']['threat']['exponent']
+                self.property.threat.tags = (list(response_body['result']['threat']['tags']) 
+                    if response_body['result']['threat']['tags'] else None)
                 
-                self.property.other.source_ip.ipv4 = response_result['result']['other']['sourceIp']['ipv4']
-                self.property.other.source_ip.ipv6 = response_result['result']['other']['sourceIp']['ipv6']
-                self.property.other.ip_version = response_result['result']['other']['ipVersion']
+                self.property.other.source_ip.ipv4 = response_body['result']['other']['sourceIp']['ipv4']
+                self.property.other.source_ip.ipv6 = response_body['result']['other']['sourceIp']['ipv6']
+                self.property.other.ip_version = response_body['result']['other']['ipVersion']
 
                 self.headers.version = response_headers['X-Api-Version']
                 self.headers.time_spend = response_headers['X-Api-Time-Spend']
@@ -150,7 +150,7 @@ class Collections:
 
             try:
 
-                response_result, response_headers = self.service_client.request_rest_api(
+                response_body, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/region'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -159,14 +159,14 @@ class Collections:
 
                 accessor_context: RegionAccessor = RegionAccessor()
                 
-                accessor_context.code = response_result['code']
-                accessor_context.message = response_result['message']
-                accessor_context.request_id = response_result['requestId']
+                accessor_context.code = response_body['code']
+                accessor_context.message = response_body['message']
+                accessor_context.request_id = response_body['requestId']
 
-                accessor_context.property.country_name = response_result['result']['countryName']
-                accessor_context.property.province_name = response_result['result']['provinceName']
-                accessor_context.property.city_name = response_result['result']['cityName']
-                accessor_context.property.county_name = response_result['result']['countyName']
+                accessor_context.property.country_name = response_body['result']['countryName']
+                accessor_context.property.province_name = response_body['result']['provinceName']
+                accessor_context.property.city_name = response_body['result']['cityName']
+                accessor_context.property.county_name = response_body['result']['countyName']
 
                 accessor_context.headers.version = response_headers['X-Api-Version']
                 accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
@@ -192,7 +192,7 @@ class Collections:
 
             try:
 
-                response_result, response_headers = self.service_client.request_rest_api(
+                response_body, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/location'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -201,13 +201,13 @@ class Collections:
 
                 accessor_context: LocationAccessor = LocationAccessor()
                 
-                accessor_context.code = response_result['code']
-                accessor_context.message = response_result['message']
-                accessor_context.request_id = response_result['requestId']
+                accessor_context.code = response_body['code']
+                accessor_context.message = response_body['message']
+                accessor_context.request_id = response_body['requestId']
 
-                accessor_context.property.timezone_name = response_result['result']['timezoneName']
-                accessor_context.property.longitude_number = response_result['result']['longitudeNumber']
-                accessor_context.property.latitude_number = response_result['result']['latitudeNumber']
+                accessor_context.property.timezone_name = response_body['result']['timezoneName']
+                accessor_context.property.longitude_number = response_body['result']['longitudeNumber']
+                accessor_context.property.latitude_number = response_body['result']['latitudeNumber']
 
                 accessor_context.headers.version = response_headers['X-Api-Version']
                 accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
@@ -233,7 +233,7 @@ class Collections:
 
             try:
 
-                response_result, response_headers = self.service_client.request_rest_api(
+                response_body, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/provider'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -242,16 +242,16 @@ class Collections:
 
                 accessor_context: ProviderAccessor = ProviderAccessor()
                 
-                accessor_context.code = response_result['code']
-                accessor_context.message = response_result['message']
-                accessor_context.request_id = response_result['requestId']
+                accessor_context.code = response_body['code']
+                accessor_context.message = response_body['message']
+                accessor_context.request_id = response_body['requestId']
 
-                accessor_context.property.isp_names = (list(response_result['result']['ispNames']) 
-                    if response_result['result']['ispNames'] else None)
-                accessor_context.property.isp_types = (list(response_result['result']['ispTypes']) 
-                    if response_result['result']['ispTypes'] else None)
-                accessor_context.property.as_number = response_result['result']['asNumber']
-                accessor_context.property.as_name = response_result['result']['asName']
+                accessor_context.property.isp_names = (list(response_body['result']['ispNames']) 
+                    if response_body['result']['ispNames'] else None)
+                accessor_context.property.isp_types = (list(response_body['result']['ispTypes']) 
+                    if response_body['result']['ispTypes'] else None)
+                accessor_context.property.as_number = response_body['result']['asNumber']
+                accessor_context.property.as_name = response_body['result']['asName']
 
                 accessor_context.headers.version = response_headers['X-Api-Version']
                 accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
@@ -277,7 +277,7 @@ class Collections:
 
             try:
 
-                response_result, response_headers = self.service_client.request_rest_api(
+                response_body, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/threat'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -286,14 +286,14 @@ class Collections:
 
                 accessor_context: ThreatAccessor = ThreatAccessor()
                 
-                accessor_context.code = response_result['code']
-                accessor_context.message = response_result['message']
-                accessor_context.request_id = response_result['requestId']
+                accessor_context.code = response_body['code']
+                accessor_context.message = response_body['message']
+                accessor_context.request_id = response_body['requestId']
 
-                accessor_context.property.timestamp = response_result['result']['timestamp']
-                accessor_context.property.exponent = response_result['result']['exponent']
-                accessor_context.property.tags = (list(response_result['result']['tags']) 
-                    if response_result['result']['tags'] else None)
+                accessor_context.property.timestamp = response_body['result']['timestamp']
+                accessor_context.property.exponent = response_body['result']['exponent']
+                accessor_context.property.tags = (list(response_body['result']['tags']) 
+                    if response_body['result']['tags'] else None)
 
                 accessor_context.headers.version = response_headers['X-Api-Version']
                 accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
