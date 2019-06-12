@@ -82,13 +82,11 @@ class Collections:
             Get is a member method. 
             This method retrieves an overview attribute for a specified IPv4 or IPv6 address, 
             including data for area, location, carrier, threat assessment, and more.
-
-            REST API: /insights/:ipAddress
             '''
 
             try:
                 
-                response_result: dict = self.service_client.request_rest_api(
+                response_result, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -124,6 +122,9 @@ class Collections:
                 self.property.other.source_ip.ipv6 = response_result['result']['other']['sourceIp']['ipv6']
                 self.property.other.ip_version = response_result['result']['other']['ipVersion']
 
+                self.headers.version = response_headers['X-Api-Version']
+                self.headers.time_spend = response_headers['X-Api-Time-Spend']
+
                 return self.property
             
             except UnexpectedError as exception_context:
@@ -149,7 +150,7 @@ class Collections:
 
             try:
 
-                response_result: dict = self.service_client.request_rest_api(
+                response_result, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/region'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -166,6 +167,9 @@ class Collections:
                 accessor_context.property.province_name = response_result['result']['provinceName']
                 accessor_context.property.city_name = response_result['result']['cityName']
                 accessor_context.property.county_name = response_result['result']['countyName']
+
+                accessor_context.headers.version = response_headers['X-Api-Version']
+                accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
 
                 return accessor_context
 
@@ -188,7 +192,7 @@ class Collections:
 
             try:
 
-                response_result: dict = self.service_client.request_rest_api(
+                response_result, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/location'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -204,6 +208,9 @@ class Collections:
                 accessor_context.property.timezone_name = response_result['result']['timezoneName']
                 accessor_context.property.longitude_number = response_result['result']['longitudeNumber']
                 accessor_context.property.latitude_number = response_result['result']['latitudeNumber']
+
+                accessor_context.headers.version = response_headers['X-Api-Version']
+                accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
 
                 return accessor_context
 
@@ -226,7 +233,7 @@ class Collections:
 
             try:
 
-                response_result: dict = self.service_client.request_rest_api(
+                response_result, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/provider'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -245,6 +252,9 @@ class Collections:
                     if response_result['result']['ispTypes'] else None)
                 accessor_context.property.as_number = response_result['result']['asNumber']
                 accessor_context.property.as_name = response_result['result']['asName']
+
+                accessor_context.headers.version = response_headers['X-Api-Version']
+                accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
 
                 return accessor_context
 
@@ -267,7 +277,7 @@ class Collections:
 
             try:
 
-                response_result: dict = self.service_client.request_rest_api(
+                response_result, response_headers = self.service_client.request_rest_api(
                     request_type = Enums.HttpRequestType.Get, 
                     request_url = '/insights/{IP_ADDRESS}/threat'.format(
                         IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
@@ -284,6 +294,9 @@ class Collections:
                 accessor_context.property.exponent = response_result['result']['exponent']
                 accessor_context.property.tags = (list(response_result['result']['tags']) 
                     if response_result['result']['tags'] else None)
+
+                accessor_context.headers.version = response_headers['X-Api-Version']
+                accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
 
                 return accessor_context
 

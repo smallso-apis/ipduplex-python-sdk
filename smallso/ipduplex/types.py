@@ -352,6 +352,20 @@ class Types:
             self.threat: Types.ThreatResult = Types.ThreatResult()
             self.other: Types.OtherResult = Types.OtherResult()
 
+    # define HeaderResult class
+
+    class HeaderResult:
+        '''
+        HeaderResult is a dynamic class. 
+        This class indicates the HTTP response headers that are available for use.
+        '''
+
+        # define __init__ function
+
+        def __init__(self):
+
+            self.version: str = None
+            self.time_spend: str = None
 
     # define AnyResult class
 

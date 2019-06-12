@@ -28,10 +28,12 @@ class AnyAccessor(Types.AnyResult):
     # define __init__ function
 
     def __init__(self, 
-        property_value: object
+        property_value: object, 
+        headers_value: dict
     ):
 
         self.property: object = property_value
+        self.headers: Types.HeaderResult = headers_value
 
     # define get function
 
@@ -63,6 +65,7 @@ class RegionAccessor(AnyAccessor):
     def __init__(self):
 
         self.property: Types.RegionResult = Types.RegionResult()
+        self.headers: Types.HeaderResult = Types.HeaderResult()
 
     # overwrite get function
 
@@ -87,6 +90,7 @@ class LocationAccessor(AnyAccessor):
     def __init__(self):
 
         self.property: Types.LocationResult = Types.LocationResult()
+        self.headers: Types.HeaderResult = Types.HeaderResult()
 
     # overwrite get function
 
@@ -111,6 +115,7 @@ class ProviderAccessor(AnyAccessor):
     def __init__(self):
 
         self.property: Types.ProviderResult = Types.ProviderResult()
+        self.headers: Types.HeaderResult = Types.HeaderResult()
 
     # overwrite get function
 
@@ -135,6 +140,7 @@ class ThreatAccessor(AnyAccessor):
     def __init__(self):
 
         self.property: Types.ThreatResult = Types.ThreatResult()
+        self.headers: Types.HeaderResult = Types.HeaderResult()
 
     # overwrite get function
 
@@ -159,6 +165,7 @@ class OtherAccessor(AnyAccessor):
     def __init__(self):
 
         self.property: Types.OtherResultEx = Types.OtherResultEx()
+        self.headers: Types.HeaderResult = Types.HeaderResult()
 
     # overwrite get function
 
@@ -183,6 +190,7 @@ class OverviewAccessor(AnyAccessor):
     def __init__(self):
 
         self.property: Types.OverviewResult = Types.OverviewResult()
+        self.headers: Types.HeaderResult = Types.HeaderResult()
 
     # overwrite get function
 

@@ -195,7 +195,7 @@ class Service:
         request_headers: dict = None, 
         request_jsons: dict = None, 
         request_query_params: dict = None, 
-    ) -> dict:
+    ) -> tuple:
         '''
         request_rest_api is a member method of this class. 
         This method implements the basic handling of HTTP requests and responses to the specified REST API.
@@ -215,9 +215,8 @@ class Service:
             If not, the value of this parameter should be set to None.
 
         
-        return dict: If the HTTP request completes successfully, the method returns a dictionary object instance that 
-            is parsed by the JSON object in response to the REST API. Otherwise, the method will throw a RequestError 
-            or ResponseError exception.
+        return tuple: If the REST API request completes successfully, the method will return a tuple containing 2 
+            members (response body, response header). Otherwise, the method will throw an exception corresponding to the error.
         '''
 
         try:
@@ -269,12 +268,12 @@ class Service:
             if not response_context or not isinstance(response_context, requests.Response):
                 raise RequestError('response_context value invalid')
             
-            response_result: dict = None
+            response_body: dict = None
 
             try:
-                response_result = json.loads(response_context.text)
+                response_body = json.loads(response_context.text)
 
-                if 'code' not in response_result or 'message' not in response_result:
+                if 'code' not in response_body or 'message' not in response_body:
                     raise Exception('response json object invalid')
 
             except Exception:
@@ -283,7 +282,7 @@ class Service:
                     status_code = response_context.status_code
                 )
             
-            return response_result
+            return response_body, dict(response_context.headers)
 
         except UnexpectedError as exception_context:
             raise exception_context
