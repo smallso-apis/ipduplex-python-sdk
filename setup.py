@@ -18,10 +18,13 @@ setuptools.setup(
     author = 'SmallSO Labs.', 
     author_email = 'support@xiaoyy.org', 
     description = 'The official Python SDK for IP Duplex.', 
-    packages = setuptools.find_packages(), 
+    packages = [
+        'smallso.ipduplex'
+    ],
     python_requires = '>=3.4', 
     install_requires = [
         'requests>=2.21.0', 
         'retrying>=1.3.3'
-    ]
+    ], 
+    zip_safe = False
 )
