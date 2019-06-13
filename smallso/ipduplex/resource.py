@@ -308,3 +308,50 @@ class Collections:
                 ))
 
                 raise UnexpectedError(exception_context)
+
+        # define other function
+
+        def other(self):
+            '''
+            other is a member method. 
+            This method is used to retrieve additional additional attributes for a specified IPv4 or IPv6 address.
+            '''
+
+            try:
+
+                response_body, response_headers = self.service_client.request_rest_api(
+                    request_type = Enums.HttpRequestType.Get, 
+                    request_url = '/insights/{IP_ADDRESS}/other'.format(
+                        IP_ADDRESS = self.ip_address if self.ip_address else '0.0.0.0'
+                    )
+                )
+
+                accessor_context: OtherAccessor = OtherAccessor()
+                
+                accessor_context.code = response_body['code']
+                accessor_context.message = response_body['message']
+                accessor_context.request_id = response_body['requestId']
+
+                accessor_context.property.ipv4.query_ip.decimal = response_body['result']['ipv4']['queryIp']['decimal']
+                accessor_context.property.ipv4.query_ip.address = response_body['result']['ipv4']['queryIp']['address']
+                accessor_context.property.ipv4.source_ip.decimal = response_body['result']['ipv4']['sourceIp']['decimal']
+                accessor_context.property.ipv4.source_ip.decimal = response_body['result']['ipv4']['sourceIp']['decimal']
+
+                accessor_context.property.ipv6.query_ip.decimal = response_body['result']['ipv6']['queryIp']['decimal']
+                accessor_context.property.ipv6.query_ip.address = response_body['result']['ipv6']['queryIp']['address']
+                accessor_context.property.ipv6.source_ip.decimal = response_body['result']['ipv6']['sourceIp']['decimal']
+                accessor_context.property.ipv6.source_ip.decimal = response_body['result']['ipv6']['sourceIp']['decimal']
+
+                accessor_context.headers.version = response_headers['X-Api-Version']
+                accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
+
+                return accessor_context
+
+            except Exception as exception_context:
+
+                print('{MODULE_NAME}.py::Collections.Insights.other -> {EXCEPTION_TEXT}'.format(
+                    MODULE_NAME = __name__, 
+                    EXCEPTION_TEXT = str(exception_context)
+                ))
+
+                raise UnexpectedError(exception_context)
