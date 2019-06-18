@@ -14,6 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+'''
+    This package is the Python SDK for the IP Duplex API. 
+    If you have any questions, please refer to the online 
+    documentation: https://scp.gitbook.io/api/cloud-api/ipduplex
+
+    thank you very much!
+
+    --------
+
+    Sincerely, King
+    2019/6/6 15:51
+'''
+
 from smallso.ipduplex.version import Version
 from smallso.ipduplex.version import VersionType
 
@@ -27,20 +40,3 @@ __version__ = '{MAJOR_NUMBER}.{MINOR_NUMBER}.{REVISION_NUMBER} {TYPE_NAME}'.form
     REVISION_NUMBER = Version.revision_number, 
     TYPE_NAME = VERSION_TYPE_NAMES[Version.type_number]
 )
-
-# initialize package __doc__ string
-
-__doc__ = ('''
-
-    This package is the Python SDK for the IP Duplex API. 
-    If you have any questions, please refer to the online 
-    documentation: https://scp.gitbook.io/api/cloud-api/ipduplex
-
-    thank you very much!
-
-    --------
-
-    Sincerely, King
-    2019/6/6 15:51
-
-''')
