@@ -41,7 +41,7 @@ class Version:
 
     major_number: int = 0
     minor_number: int = 1
-    revision_number: int = 1
+    revision_number: int = 4
 
     type_number: int = VersionType.Developer
 

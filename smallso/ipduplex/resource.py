@@ -173,6 +173,9 @@ class Collections:
 
                 return accessor_context
 
+            except UnexpectedError as exception_context:
+                raise exception_context
+
             except Exception as exception_context:
 
                 print('{MODULE_NAME}.py::Collections.Insights.region -> {EXCEPTION_TEXT}'.format(
@@ -213,6 +216,9 @@ class Collections:
                 accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
 
                 return accessor_context
+
+            except UnexpectedError as exception_context:
+                raise exception_context
 
             except Exception as exception_context:
 
@@ -258,6 +264,9 @@ class Collections:
 
                 return accessor_context
 
+            except UnexpectedError as exception_context:
+                raise exception_context
+
             except Exception as exception_context:
 
                 print('{MODULE_NAME}.py::Collections.Insights.provider -> {EXCEPTION_TEXT}'.format(
@@ -300,6 +309,9 @@ class Collections:
 
                 return accessor_context
 
+            except UnexpectedError as exception_context:
+                raise exception_context
+
             except Exception as exception_context:
 
                 print('{MODULE_NAME}.py::Collections.Insights.threat -> {EXCEPTION_TEXT}'.format(
@@ -335,17 +347,20 @@ class Collections:
                 accessor_context.property.ipv4.query_ip.decimal = response_body['result']['ipv4']['queryIp']['decimal']
                 accessor_context.property.ipv4.query_ip.address = response_body['result']['ipv4']['queryIp']['address']
                 accessor_context.property.ipv4.source_ip.decimal = response_body['result']['ipv4']['sourceIp']['decimal']
-                accessor_context.property.ipv4.source_ip.decimal = response_body['result']['ipv4']['sourceIp']['decimal']
+                accessor_context.property.ipv4.source_ip.address = response_body['result']['ipv4']['sourceIp']['address']
 
                 accessor_context.property.ipv6.query_ip.decimal = response_body['result']['ipv6']['queryIp']['decimal']
                 accessor_context.property.ipv6.query_ip.address = response_body['result']['ipv6']['queryIp']['address']
                 accessor_context.property.ipv6.source_ip.decimal = response_body['result']['ipv6']['sourceIp']['decimal']
-                accessor_context.property.ipv6.source_ip.decimal = response_body['result']['ipv6']['sourceIp']['decimal']
+                accessor_context.property.ipv6.source_ip.address = response_body['result']['ipv6']['sourceIp']['address']
 
                 accessor_context.headers.version = response_headers['X-Api-Version']
                 accessor_context.headers.time_spend = response_headers['X-Api-Time-Spend']
 
                 return accessor_context
+
+            except UnexpectedError as exception_context:
+                raise exception_context
 
             except Exception as exception_context:
 
