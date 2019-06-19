@@ -1,5 +1,7 @@
 # setup.py is python-3.7.3 source file
 
+import os
+import shutil
 import setuptools
 
 from smallso.ipduplex.version import *
@@ -28,3 +30,14 @@ setuptools.setup(
     ], 
     zip_safe = False
 )
+
+wheel_file_name: str = './dist/ipduplex-{VERSION_NUMBER}-py3-none-any.whl'.format(
+    VERSION_NUMBER = '{MAJOR_NUMBER}.{MINOR_NUMBER}.{REVISION_NUMBER}'.format(
+        MAJOR_NUMBER = Version.major_number, 
+        MINOR_NUMBER = Version.minor_number, 
+        REVISION_NUMBER = Version.revision_number
+    )
+)
+
+if os.access(wheel_file_name, os.R_OK):
+   shutil.copy(wheel_file_name, './dist/ipduplex-release-py3-none-any.whl')
