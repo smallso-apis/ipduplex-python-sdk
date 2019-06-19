@@ -149,7 +149,7 @@ def main():
             IPV6_SOURCE_ADDRESS = property_result.ipv6.source_ip.address
         ), end = '\n\n')
     except NotFoundError:
-        print(' (!) other unknown')
+        print(' (!) other unknown', end = '\n\n')
 
     try:
         property_result: Types.OverviewResult = collection.get()
@@ -161,7 +161,7 @@ def main():
             COUNTY_NAME = property_result.region.county_name, 
             ISP_NAME = (property_result.provider.isp_names[0] if property_result.provider.isp_names and 
                 len(property_result.provider.isp_names) > 0 else None)
-        ))
+        ), end = '\n\n')
 
     except NotFoundError:
-        print(' (!) overview unknown')
+        print(' (!) overview unknown', end = '\n\n')

@@ -74,5 +74,7 @@ if __name__ == '__main__':
         ))
 
         print_traceback()
+    else:
+        print(' (√) The application test completed successfully.')
 
     print('\n=========== Application Test End ===========', end = '\n\n')
