@@ -1,4 +1,7 @@
+![Logo](https://libget.com/ipduplex/logo/concept-1.png)
+
 # IP Duplex SDK for Python
+
 The IP Duplex SDK for Python is an IP Duplex SDK for Python, which is referred to as the Python SDK for convenience. By using the Python SDK, you can easily access the IP Duplex API and quickly integrate it into your workload.
 
 ## Navigation
@@ -12,6 +15,6 @@ The IP Duplex SDK for Python is an IP Duplex SDK for Python, which is referred t
 - [License](LICENSE)
 - [Author Homepage](https://www.xiaoyy.org/)
 
-## Other...
+## Other
 
 If you encounter any problems during use, you are welcome to navigate to the [Issues](https://github.com/smallso-apis/ipduplex-python-sdk/issues) page to submit and we will be happy to assist you with the problem.
